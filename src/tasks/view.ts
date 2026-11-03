@@ -1,3 +1,5 @@
+// Stored tasks use titulo, descricao, and dataCriacao. The screen uses name, description, and date.
+// This file is the only translation between those two shapes.
 import type { TaskRecord } from "./types";
 
 export type TaskView = {

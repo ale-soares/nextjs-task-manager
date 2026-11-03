@@ -71,6 +71,7 @@ export function createTaskService(options?: {
     },
     create(input) {
       const parsed = parse(createTaskSchema, input);
+      // The server assigns id and dataCriacao. An update keeps the original dataCriacao so an edit does not change list order.
       const task: TaskRecord = {
         id: createId(),
         titulo: parsed.titulo,

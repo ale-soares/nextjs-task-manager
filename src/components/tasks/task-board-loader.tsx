@@ -7,6 +7,7 @@ import { createTRPCContext } from "@/trpc/init";
 import { appRouter } from "@/trpc/routers/_app";
 
 export async function TaskBoardLoader() {
+  // Tie the render to the request, load the first page through the router in-process, and hydrate that cache into the browser.
   await connection();
 
   const queryClient = new QueryClient();

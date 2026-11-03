@@ -5,6 +5,7 @@ import { CacheProvider } from "@emotion/react";
 import { useServerInsertedHTML } from "next/navigation";
 import { useState } from "react";
 
+// Chakra emits Emotion CSS during server render. Those rules are written into the HTML so the first paint includes them.
 export function EmotionRegistry({ children }: { children: React.ReactNode }) {
   const [{ cache, flush }] = useState(() => {
     const cache = createCache({ key: "css" });

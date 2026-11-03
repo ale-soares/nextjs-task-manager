@@ -32,6 +32,7 @@ export function createTaskRouter(service: TaskService = taskService) {
 
 export const taskRouter = createTaskRouter();
 
+// Domain failures stay on the service. This boundary turns them into tRPC codes for every caller.
 function runTask<T>(fn: () => T): T {
   try {
     return fn();

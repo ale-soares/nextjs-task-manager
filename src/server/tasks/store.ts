@@ -40,12 +40,14 @@ export function createMemoryStore(): TaskStore {
         return undefined;
       }
       const [removed] = tasks.splice(index, 1);
+      // The list cursor is this id. Keeping its creation time lets the next page start after a task that is already gone.
       deleted.set(removed.id, removed.dataCriacao);
       return { ...removed };
     },
   };
 }
 
+// A module-level store resets when Next.js reloads the file. globalThis keeps one store for the life of the process.
 const globalForTasks = globalThis as { __taskManagerStore?: TaskStore };
 
 export function getSharedStore() {

@@ -51,6 +51,7 @@ export function TaskBoard() {
     return () => observer.disconnect();
   }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
+  // Patch the pages already loaded. Refetching the infinite query would drop later pages and move the scroll position.
   function prependTask(task: TaskRecord) {
     queryClient.setQueryData<InfiniteData<TaskPage>>(listKey, (current) => {
       if (!current) {
