@@ -1,14 +1,8 @@
-import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "../init";
+import { createTRPCRouter } from "../init.ts";
+import { taskRouter } from "./task.ts";
 
 export const appRouter = createTRPCRouter({
-  hello: publicProcedure
-    .input(z.object({ text: z.string() }))
-    .query(({ input }) => {
-      return {
-        greeting: `Hello ${input.text}`,
-      };
-    }),
+  task: taskRouter,
 });
 
 export type AppRouter = typeof appRouter;
